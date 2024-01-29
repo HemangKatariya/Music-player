@@ -35,7 +35,7 @@ const Home = () => {
           <div className="box_recent">
             <div
               className="flex2"
-              style={{ backgroundColor: "#363434", gap: "20px" }}
+              style={{ backgroundColor: "#363434", gap: "10px" }}
             >
               <div className="recent_image"></div>
               <div>
@@ -49,14 +49,14 @@ const Home = () => {
                     padding: "3px",
                   }}
                 >
-                  name of the songsdfgsdfgsdfgsdfg
+                  name of the song
                 </div>
                 <div
                   className="text"
                   style={{
                     backgroundColor: "#363434",
                     color: "white",
-                    fontSize: "17px",
+                    fontSize: "14px",
                     fontWeight: "100",
                     padding: "3px",
                   }}
@@ -89,7 +89,7 @@ const Home = () => {
                   className="text"
                   style={{
                     margin: "10px",
-                    fontSize: "12px",
+                    fontSize: "13px",
                     color: "grey",
                   }}
                 >

@@ -5,9 +5,10 @@
   width: 0px;
 }
 .start {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: flex-start;
+  text-align: center;
 }
 input[type="range"] {
   height: 4px;
@@ -128,10 +129,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .box_recent {
-  width: 90%;
   padding: 10px;
   background-color: #363434;
   margin-top: 20px;
+  border-radius: 10px;
 }
 .recent_image {
   height: 50px;
