@@ -9,9 +9,13 @@ import VolumeMedium from "../../components/Icons/VolumeMedium";
 import VolumeHigh from "../../components/Icons/VolumeHigh";
 import VolumeLow from "../../components/Icons/VolumeLow";
 import VolumeOff from "../../components/Icons/VolumeOff";
+import PauseIcon from "../../components/Icons/PauseIcon";
 
 const Home = () => {
   const [volume, setVolume] = useState<number>(0);
+  const [play, setPlay] = useState<boolean>(false);
+  const [shuffle, setShuffle] = useState<boolean>(false);
+  const [loop, setLoop] = useState<boolean>(false);
 
   let volumeIcon;
   if (volume === 0) {
@@ -23,10 +27,46 @@ const Home = () => {
   } else {
     volumeIcon = <VolumeHigh color="white" size={20} />;
   }
+
   return (
     <>
       <div className="main">
-        <div className="div1"></div>
+        <div className="div1 start">
+          <div className="box_recent">
+            <div
+              className="flex2"
+              style={{ backgroundColor: "#363434", gap: "20px" }}
+            >
+              <div className="recent_image"></div>
+              <div>
+                <div
+                  className="text"
+                  style={{
+                    backgroundColor: "#363434",
+                    color: "white",
+                    fontSize: "17px",
+                    fontWeight: "600",
+                    padding: "3px",
+                  }}
+                >
+                  name of the songsdfgsdfgsdfgsdfg
+                </div>
+                <div
+                  className="text"
+                  style={{
+                    backgroundColor: "#363434",
+                    color: "white",
+                    fontSize: "17px",
+                    fontWeight: "100",
+                    padding: "3px",
+                  }}
+                >
+                  author name
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="div2"></div>
       </div>
       <div className="div3">
@@ -59,15 +99,43 @@ const Home = () => {
             </div>
           </div>
         </div>
-
         <div>
           <div className="NavigatorIcons">
-            {/* <ShuffleIcon color="#117a37" size={20} /> */}
-            <ShuffleIcon color="white" size={20} />
-            <BackwardIcon color="white" size={20} />
-            <PlayIcon color="white" size={20} />
-            <ForwardIcon color="white" size={20} />
-            <LoopIcon color="white" size={20} />
+            <div>
+              {shuffle == false ? (
+                <div onClick={() => setShuffle(true)}>
+                  <ShuffleIcon color="white" size={20} />
+                </div>
+              ) : (
+                <div onClick={() => setShuffle(false)}>
+                  <ShuffleIcon color="#117a37" size={20} />
+                </div>
+              )}
+            </div>
+            <div>
+              <BackwardIcon color="white" size={20} />
+            </div>
+            <div>
+              {play == false ? (
+                <PlayIcon color="white" size={20} />
+              ) : (
+                <PauseIcon color="white" size={20} />
+              )}
+            </div>
+            <div>
+              <ForwardIcon color="white" size={20} />
+            </div>
+            <div>
+              {loop == false ? (
+                <div onClick={() => setLoop(true)}>
+                  <LoopIcon color="white" size={20} />
+                </div>
+              ) : (
+                <div onClick={() => setLoop(false)}>
+                  <LoopIcon color="#117a37" size={20} />
+                </div>
+              )}
+            </div>
           </div>
           <div style={{ marginTop: "1em" }}>
             <input type="range" min="0" max="100" step="1" />

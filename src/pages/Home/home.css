@@ -4,7 +4,11 @@
 ::-webkit-scrollbar {
   width: 0px;
 }
-
+.start {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 input[type="range"] {
   height: 4px;
   appearance: none;
@@ -19,11 +23,11 @@ input[type="range"]::-webkit-slider-thumb {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: green;
+  background-color: #117a37;
 }
 
 input[type="range"]:hover {
-  background: green;
+  background: #117a37;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
   background-color: white;
@@ -34,6 +38,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.flex2 {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  text-align: start;
 }
 
 .main {
@@ -108,18 +118,32 @@ input[type="range"]::-webkit-slider-thumb:hover {
   justify-content: flex-start;
   text-align: start;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .Image {
-  height: 60px;
-  width: 60px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
   background-color: aqua;
+}
+
+.box_recent {
+  width: 90%;
+  padding: 10px;
+  background-color: #363434;
+  margin-top: 20px;
+}
+.recent_image {
+  height: 50px;
+  width: 50px;
+  background-color: #117a37;
+  display: flex;
 }
 
 /* for smaller than tablet device */
 @media only screen and (max-width: 780px) {
   .div2 {
-    height: 80vh;
+    height: 75vh;
     width: 100%;
     margin: 0;
   }
@@ -127,7 +151,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     display: none;
   }
   .div3 {
-    height: 20vh;
+    height: 25vh;
   }
 }
 
