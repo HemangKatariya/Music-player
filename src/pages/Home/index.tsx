@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./home.css";
 import ShuffleIcon from "../../components/Icons/ShuffleIcon";
 import ForwardIcon from "../../components/Icons/ForwardIcon";
@@ -10,14 +9,22 @@ import VolumeHigh from "../../components/Icons/VolumeHigh";
 import VolumeLow from "../../components/Icons/VolumeLow";
 import VolumeOff from "../../components/Icons/VolumeOff";
 import PauseIcon from "../../components/Icons/PauseIcon";
-
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setPlay,
+  setShuffle,
+  setLoop,
+  setVolume,
+  setForward,
+  setBackward,
+  setProgress,
+} from "../../app/features/music/musicSlice";
 const Home = () => {
-  const [volume, setVolume] = useState<number>(0);
-  const [play, setPlay] = useState<boolean>(false);
-  const [shuffle, setShuffle] = useState<boolean>(false);
-  const [loop, setLoop] = useState<boolean>(false);
-
   let volumeIcon;
+  const { play, shuffle, loop, volume, forward, backward, progress } =
+    useSelector((state: any) => state.counter.player);
+  const dispatch = useDispatch();
+
   if (volume === 0) {
     volumeIcon = <VolumeOff color="white" size={15} />;
   } else if (volume > 0 && volume < 30) {
@@ -102,43 +109,48 @@ const Home = () => {
         <div>
           <div className="NavigatorIcons">
             <div>
-              {shuffle == false ? (
-                <div onClick={() => setShuffle(true)}>
-                  <ShuffleIcon color="white" size={20} />
-                </div>
-              ) : (
-                <div onClick={() => setShuffle(false)}>
+              <div onClick={() => dispatch(setShuffle(!shuffle))}>
+                {shuffle ? (
                   <ShuffleIcon color="#117a37" size={20} />
-                </div>
-              )}
+                ) : (
+                  <ShuffleIcon color="white" size={20} />
+                )}
+              </div>
             </div>
-            <div>
+            <div onClick={() => dispatch(setBackward(!backward))}>
               <BackwardIcon color="white" size={20} />
             </div>
-            <div>
-              {play == false ? (
-                <PlayIcon color="white" size={20} />
-              ) : (
+            <div onClick={() => dispatch(setPlay(!play))}>
+              {play ? (
                 <PauseIcon color="white" size={20} />
+              ) : (
+                <PlayIcon color="white" size={20} />
               )}
             </div>
-            <div>
+            <div onClick={() => dispatch(setForward(!forward))}>
               <ForwardIcon color="white" size={20} />
             </div>
             <div>
-              {loop == false ? (
-                <div onClick={() => setLoop(true)}>
-                  <LoopIcon color="white" size={20} />
-                </div>
-              ) : (
-                <div onClick={() => setLoop(false)}>
+              <div onClick={() => dispatch(setLoop(!loop))}>
+                {loop ? (
                   <LoopIcon color="#117a37" size={20} />
-                </div>
-              )}
+                ) : (
+                  <LoopIcon color="white" size={20} />
+                )}
+              </div>
             </div>
           </div>
           <div style={{ marginTop: "1em" }}>
-            <input type="range" min="0" max="100" step="1" />
+            <input
+              type="range"
+              min="0"
+              max="100"
+              step="1"
+              defaultValue={0}
+              onChange={(event) =>
+                dispatch(setProgress(Number(event.target.value)))
+              }
+            />
           </div>
         </div>
         <div className="flex" style={{ gap: "15px" }}>
@@ -149,9 +161,9 @@ const Home = () => {
             value={volume}
             max="100"
             step="1"
-            onChange={(event) => {
-              setVolume(Number(event.target.value));
-            }}
+            onChange={(event) =>
+              dispatch(setVolume(Number(event.target.value)))
+            }
           />
         </div>
       </div>

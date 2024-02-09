@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import musicReducer from "../app/features/music/musicSlice";
 
-const store = configureStore({
-  reducer: {},
+export default configureStore({
+  reducer: {
+    counter: musicReducer,
+  },
 });
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
